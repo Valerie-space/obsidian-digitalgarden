@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"/Other/","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T16:54:17.007+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T16:55:54.808+08:00","dg-note-properties":{}}
 ---
 
 # 如何将Obsidian文章发布至个人网站？
