@@ -1,11 +1,13 @@
 ---
-{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:22:01.139+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:29:45.324+08:00","dg-note-properties":{}}
 ---
 
-# 如何将Obsidian文章发布至个人网站？
+
+# 如何将 Obsidian 文章发布至个人网站？
 
 > - [插件：obsidian-digital-garden](https://github.com/oleeskild/obsidian-digital-garden)
 > - [Digital Garden 插件官方文档](https://docs.forestry.md/)
+
 ## 准备
 
 1. 准备 GitHub 模版仓库与 Token
@@ -32,23 +34,22 @@
 	- 配置构建参数：
 		- Project Name：自定义网站项目名。
 		- Production branch：main。
-		- Framework preset：选择  None。
+		- Framework preset：选择 None。
 		- Build command：npm run build
 		- Build output directory：dist
 	- 部署：点击 Save and Deploy.
 
-
-
-
 ## 编写与发布
 
-在笔记yaml部分添加属性：
-- `dg-home: true`:将该笔记作为网站的主页。只有一个页面可以设为true
-- `dg-publish: true`:将笔记发布到网站。
-- `dg-permalink: "aaa/bbb"`：自定义该页面的URL路径，比如`yoursite.pages.dev/aaa/bbb`。注意！**如果你的笔记文件名为中文，那么必须自定义URL路径**。因为URL不支持中文。可以随便打点乱码，比如awudhi。
-- `dg-path: "Lecture/MIT6.5840/"`：改变该文件在网站导航树中的虚拟文件夹层级结构。注意，一定要以`/`结尾
+在笔记 yaml 部分添加属性：
+
+- `dg-home: true`: 将该笔记作为网站的主页。只有一个页面可以设为 true
+- `dg-publish: true`: 将笔记发布到网站。
+- `dg-permalink: "aaa/bbb"`：自定义该页面的 URL 路径，比如 `yoursite.pages.dev/aaa/bbb`。注意！**如果你的笔记文件名为中文，那么必须自定义 URL 路径**。因为 URL 不支持中文。可以随便打点乱码，比如 awudhi。
+- `dg-path: "Lecture/MIT6.5840/uhwdo"`：改变该文件在网站导航树中的虚拟文件夹层级结构。
 - `title: "your-title"`：覆盖页面在网页端显示的标题（若不设置，默认使用文件名或第一级 `#` 标题）。
 - `tags: [分布式系统, Go语言]`：页面标签，会在网站上生成对应的标签分类和筛选。也可以写为以下格式：
+
 ```yaml
 ---
 tags:
@@ -57,8 +58,13 @@ tags:
 ---
 ```
 
-
+> [!NOTE]
+> 如果要自定义文件夹层级结构，让笔记放在指定的目录下，需要注意一个小 bug：
+> 例如，笔记 A 和笔记 B 都要放在目录 Other 下，那么不能全都设为 `dg-path: Others/`，而要分别设为`dg-path: Others/Ahiuhdcoi` 和`dg-path: Others/Bihjosid`（后面那个随便写什么都行），才能在目录树上正常渲染。
+> 
+> 如果不自定义，而是默认用 obsidian 自带的文件夹层级，则无需考虑这个 bug。
 
 其她：
+
 - `dg-pass: "your-password"`：为该单篇笔记设置访问密码。未输入正确密码前，访客无法阅读内容。
 - `dg-pinned: "true"`：在侧边栏导航树中将该笔记置顶显示。
