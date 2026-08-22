@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"HomePage","permalink":"/home-page/","title":"HomePage","tags":["gardenEntry"],"created":"2026-08-22T12:45:58.300+08:00","updated":"2026-08-22T18:50:25.366+08:00","dg-note-properties":{"title":"HomePage"}}
+{"dg-publish":true,"dg-path":"HomePage","permalink":"/home-page/","title":"HomePage","tags":["gardenEntry"],"created":"2026-08-22T12:45:58.300+08:00","updated":"2026-08-22T18:55:18.680+08:00","dg-note-properties":{"title":"HomePage"}}
 ---
 
 
@@ -30,10 +30,10 @@
 
 
 
-- [[发布/HomePage\|HomePage]]
-- [[领域/计算机/6.5840 Lab 1：MapReduce\|6.5840 Lab 1：MapReduce]]
-- [[发布/如何将Obsidian文章发布至个人网站？\|如何将Obsidian文章发布至个人网站？]]
-- [[领域/计算机/MIT6.824 引言\|MIT6.824 引言]]
-- [[技能/Git 的配置与仓库初始化（WSL2）\|Git 的配置与仓库初始化（WSL2）]]
+- 2026-08-22 [[发布/如何将Obsidian文章发布至个人网站？\|如何将Obsidian文章发布至个人网站？]]
+- 2026-08-22 [[发布/HomePage\|HomePage]]
+- 2026-08-04 [[领域/计算机/6.5840 Lab 1：MapReduce\|6.5840 Lab 1：MapReduce]]
+- 2026-07-31 [[领域/计算机/MIT6.824 引言\|MIT6.824 引言]]
+- 2026-07-01 [[技能/Git 的配置与仓库初始化（WSL2）\|Git 的配置与仓库初始化（WSL2）]]
 
 { .block-language-dataview}
