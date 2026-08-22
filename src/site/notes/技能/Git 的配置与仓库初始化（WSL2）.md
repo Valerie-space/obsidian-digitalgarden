@@ -1,11 +1,11 @@
 ---
-{"dg-publish":true,"dg-path":"Others/","dg-permalink":"git1","permalink":"/git1/","title":"Git 的配置与仓库初始化（WSL2）","created":"2026-07-01T16:53:50.129+08:00","updated":"2026-08-22T16:57:22.232+08:00","dg-note-properties":{"title":"Git 的配置与仓库初始化（WSL2）","aliases":[null],"created":"2026-07-01","updated":"2026-08-22 16:57","type":"skill","description":null,"status":"done"}}
+{"dg-publish":true,"dg-path":"Others/git1","dg-permalink":"git1","permalink":"/git1/","title":"Git 的配置与仓库初始化（WSL2）","created":"2026-07-01T16:53:50.129+08:00","updated":"2026-08-22T17:22:08.015+08:00","dg-note-properties":{"title":"Git 的配置与仓库初始化（WSL2）","aliases":[null],"created":"2026-07-01","updated":"2026-08-22 16:57","type":"skill","description":null,"status":"done"}}
 ---
 
 
 # Git 的配置与仓库初始化（WSL2）
 
-> 参考：
+> 相关：
 > - 书籍：[Git](https://git-scm.com/book/zh/v2)
 > - 游戏：[Learn Git Branching](https://learngitbranching.js.org/?locale=zh_CN)
 

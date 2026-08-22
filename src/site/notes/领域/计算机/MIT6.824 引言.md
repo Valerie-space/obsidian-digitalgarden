@@ -1,13 +1,11 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/","dg-permalink":"mit6.5840-intro","permalink":"/mit6.5840-intro/","title":"MIT6.824 引言","created":"2026-07-31T20:23:00.117+08:00","updated":"2026-08-22T17:10:54.033+08:00","dg-note-properties":{"title":"MIT6.824 引言","aliases":[null],"created":"2026-07-31","updated":"2026-08-22 17:10","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-intro","dg-permalink":"mit6.5840-intro","permalink":"/mit6.5840-intro/","title":"MIT6.824 引言","created":"2026-07-31T20:23:00.117+08:00","updated":"2026-08-22T17:22:18.555+08:00","dg-note-properties":{"title":"MIT6.824 引言","aliases":[null],"created":"2026-07-31","updated":"2026-08-22 17:10","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 
 # MIT6.824 引言
 
-> 所属领域：[[领域/计算机/计算机\|计算机]]
-> 
-> 参考：
+> 相关：
 > - [Introduction](https://pdos.csail.mit.edu/6.824/notes/l01.txt)
 > - [MapReduce（2004）](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)
 
