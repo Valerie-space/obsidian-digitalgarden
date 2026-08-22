@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:29:45.324+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:30:21.291+08:00","dg-note-properties":{}}
 ---
 
 
@@ -9,6 +9,7 @@
 > - [Digital Garden 插件官方文档](https://docs.forestry.md/)
 
 ## 准备
+
 
 1. 准备 GitHub 模版仓库与 Token
 
