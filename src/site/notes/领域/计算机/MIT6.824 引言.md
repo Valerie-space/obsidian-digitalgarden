@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"///mit-6-824/","title":"MIT6.824 引言","created":"2026-07-31T20:23:00.117+08:00","updated":"2026-08-22T13:48:23.180+08:00","dg-note-properties":{"title":"MIT6.824 引言","aliases":[null],"created":"2026-07-31","updated":"2026-08-22 13:48","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-permalink":"mit6.5840-intro","permalink":"/mit6.5840-intro/","title":"MIT6.824 引言","created":"2026-07-31T20:23:00.117+08:00","updated":"2026-08-22T16:08:30.239+08:00","dg-note-properties":{"title":"MIT6.824 引言","aliases":[null],"created":"2026-07-31","updated":"2026-08-22 16:08","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 
