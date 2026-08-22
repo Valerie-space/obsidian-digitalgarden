@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-permalink":"Git","permalink":"/Git/","title":"Git使用方法","created":"2026-07-01T16:53:50.129+08:00","updated":"2026-08-22T15:50:57.461+08:00","dg-note-properties":{"title":"Git使用方法","aliases":[null],"created":"2026-07-01","updated":"2026-08-22 15:50","type":"skill","description":null,"status":"active"}}
+{"dg-publish":true,"dg-permalink":"git","permalink":"/git/","title":"Git使用方法","created":"2026-07-01T16:53:50.129+08:00","updated":"2026-08-22T15:56:18.394+08:00","dg-note-properties":{"title":"Git使用方法","aliases":[null],"created":"2026-07-01","updated":"2026-08-22 15:50","type":"skill","description":null,"status":"active"}}
 ---
 
 
