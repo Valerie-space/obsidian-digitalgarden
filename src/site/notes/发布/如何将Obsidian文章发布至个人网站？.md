@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Others/","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T16:55:54.808+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:11:24.251+08:00","dg-note-properties":{}}
 ---
 
 # 如何将Obsidian文章发布至个人网站？
@@ -43,10 +43,10 @@
 ## 编写与发布
 
 在笔记yaml部分添加属性：
-- `dg-home: "true"`:将该笔记作为网站的主页。只有一个页面可以设为true
-- `dg-publish: "true"`:将笔记发布到网站。
-- `dg-permalink: "aaa"`：自定义该页面的URL路径，比如`yoursite.pages.dev/aaa`。注意！**如果你的笔记文件名为中文，那么必须自定义URL路径**。因为URL不支持中文。可以随便打点乱码，比如awudhi。
-- `dg-path: "Lecture/MIT6.5840"`：改变该文件在网站导航树中的虚拟文件夹层级结构。支持中文。
+- `dg-home: true`:将该笔记作为网站的主页。只有一个页面可以设为true
+- `dg-publish: true`:将笔记发布到网站。
+- `dg-permalink: "aaa/bbb"`：自定义该页面的URL路径，比如`yoursite.pages.dev/aaa/bbb`。注意！**如果你的笔记文件名为中文，那么必须自定义URL路径**。因为URL不支持中文。可以随便打点乱码，比如awudhi。
+- `dg-path: "Lecture/MIT6.5840/"`：改变该文件在网站导航树中的虚拟文件夹层级结构。注意，一定要以`/`结尾
 - `title: "your-title"`：覆盖页面在网页端显示的标题（若不设置，默认使用文件名或第一级 `#` 标题）。
 - `tags: [分布式系统, Go语言]`：页面标签，会在网站上生成对应的标签分类和筛选。也可以写为以下格式：
 ```yaml
