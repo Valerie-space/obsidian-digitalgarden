@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-23T09:40:26.413+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-23T09:56:18.518+08:00","dg-note-properties":{}}
 ---
 
 
@@ -48,7 +48,7 @@
 - `dg-permalink: "aaa/bbb"`：自定义该页面的 URL 路径，比如 `yoursite.pages.dev/aaa/bbb`。注意！**如果你的笔记文件名为中文，那么必须自定义 URL 路径**。因为 URL 不支持中文。可以随便打点乱码，比如 awudhi。
 - `dg-path: "Lecture/MIT6.5840/uhwdo"`：改变该文件在网站导航树中的虚拟文件夹层级结构。
 - `title: "your-title"`：覆盖页面在网页端显示的标题（若不设置，默认使用文件名或第一级 `#` 标题）。
-- `tags: [分布式系统, Go语言]`：页面标签，会在网站上生成对应的标签分类和筛选。也可以写为以下格式：
+- `tags: [分布式系统, Go语言]`：页面标签（非常好使！），会在网站上生成对应的标签分类和筛选。也可以写为以下格式：
 
 ```yaml
 ---
@@ -64,10 +64,18 @@ tags:
 > 
 > 如果不自定义，而是默认用 obsidian 自带的文件夹层级，则无需考虑这个 bug。
 
-其她：
+其她属性：
 
 - `dg-pass: "your-password"`：为该单篇笔记设置访问密码。未输入正确密码前，访客无法阅读内容。
 - `dg-pinned: "true"`：在侧边栏导航树中将该笔记置顶显示。
 - `dg-hide: true`：想整篇笔记都不出现在网站的导航、搜索、图谱等任何地方，只可以通过链接访问
 - `dg-hide-in-filetree: true`：只从文件树中隐藏，但在搜索和图谱中依然可见。
 - `dg-hide-in-graph: true`：只从图谱中隐藏。
+
+在 Digital Garden 的插件设置页面，可以进行精细化控制：
+
+- Features 选项中，可以控制目录树、文件名、搜索栏等结构的显隐
+- Appearance 选项中，可以修改网页样式、时间戳等
+- Advanced —— Custom Filters中，可以自定义隐藏特定内容
+	- 我设置的正则表达式是` `，匹配内容为一个空格。这样能够隐藏发布文章中，所有位于 之间的内容。
+	- 用obsidian自带的`%%`注释更方便，但它会隐藏注释内容的样式。

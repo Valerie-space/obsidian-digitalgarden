@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-23T09:42:01.629+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-23 09:42","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-24T00:21:06.260+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-24 00:21","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
 ---
 
 
@@ -7,22 +7,39 @@
 
 **DOI**：[10.1145/1327452.1327492](https://dl.acm.org/doi/10.1145/1327452.1327492)
 
-**PDF**：[2008-MapReduce simplified data processing on large clusters.pdf](file:///F:%5CResearch%5CZotero%5CData%5Cstorage%5CE7HDPKR3%5C2008-MapReduce%20simplified%20data%20processing%20on%20large%20clusters.pdf)
+
 
 >[!note]- 摘要
 > MapReduce is a programming model and an associated implementation for processing and generating large datasets that is amenable to a broad variety of real-world tasks. Users specify the computation in terms of a _map_ and a _reduce_ function, and the underlying runtime system automatically parallelizes the computation across large-scale clusters of machines, handles machine failures, and schedules inter-machine communication to make efficient use of the network and disks. Programmers find the system easy to use: more than ten thousand distinct MapReduce programs have been implemented internally at Google over the past four years, and an average of one hundred thousand MapReduce jobs are executed on Google's clusters every day, processing a total of more than twenty petabytes of data per day.
 
-HIDDEN_END
+> 相关笔记：
+> - [[领域/学术/如何阅读文献——综述篇\|如何阅读文献——综述篇]]
+> - [[领域/学术/如何阅读文献——期刊篇\|如何阅读文献——期刊篇]]
 
-## 阅读流程笔记
+> [!NOTE]
+> 里程碑的定义是：重新定义了问题空间（转移范式）、划定了边界
+> 
+> 为什么要读里程碑论文？它不会过时吗？
+> 
+> - 里程碑论文是技术的主干，后续的创新大多是沿此衍生出的分支或对主干局限性的修正。了解主干能让我们发现技术是如何演进的。
+> - 里程碑论文中提出的概念/解决的痛点/遗留的问题往往是学术界的常识，最新论文默认我们已经掌握了这些基础。
+> - 里程碑论文中的思维不会过时：
+> 	- 如何定义问题？
+> 	- 如何约束和权衡？（在给定的边界条件下，做架构上的权衡）
+> 	- 如何设计实验来评估性能、或证明方案的正确性
+> 不过，硬件假设和工程细节会变化。
 
-### 【背景和动机】
+## 总结
 
-#### 这篇论文解决了当时的什么痛点？
+论文提出了 MapReduce 分布式计算模型。它将**大数据批处理任务**抽象为 Map 和 Reduce 两个函数，由底层框架自动处理数据分片、任务调度、容错、通信等，程序员无需编写底层分布式代码，即可基于分布式集群实现业务逻辑。
 
-- 即使业务逻辑非常简单（比如词频统计），处理海量数据仍需要在多台机器上分布式运行。因此程序员无法专注于业务逻辑，她们需要写大量底层分布式相关的复杂代码。
+## 背景、动机、创新点
 
-#### 在此之前，主流/传统方案有什么缺陷？论文提出了哪些创新点？
+### 这篇论文解决了当时的什么痛点？
+
+即使业务逻辑非常简单（比如词频统计），处理海量数据仍需要在多台机器上分布式运行。因此程序员无法专注于业务逻辑，她们需要写大量底层分布式相关的复杂代码，开发成本极高。
+
+### 在此之前，主流/传统方案有什么缺陷？论文提出了哪些创新点？
 
 对于手写专用分布式程序：
 
@@ -31,25 +48,87 @@ HIDDEN_END
 
 对于传统的并行编程模型（MPI、BSP）：
 
-- 缺陷：1）虽然提供了并行原语，但暴露了大量通信、同步与消息传递细节，编程门槛极高；2）容错能力差，节点故障需要程序员人工介入；3）采用静态数据分区，不支持负载均衡
-- MR：1）自动化容错机制（失败任务重试）；2）备份任务（即推测执行），为 Straggler 启动冗余实例。3）通过动态分区实现负载均衡
+- 缺陷：虽然提供了并行原语，但暴露了大量通信、同步与消息传递细节，编程门槛极高；容错能力差，节点故障需要程序员人工介入；
+- MR：自动化容错机制（失败任务重试）；备份任务（即推测执行），为 Straggler 启动冗余实例
 
 对于专用的排序/数据库系统（NOW-Sort）
 
 - 缺陷不具备通用的编程能力。（一套专用机器只能用于做排序，而其她逻辑却做不了）
-- MR：在 MR 框架之上，程序员能够实现任意能由 Map 和 Reduce 表达的业务逻辑。
-
-对于单机计算模型
-
-- 缺陷：受限于物理内存与 CPU，无法横向扩展。
-- MR：支持通过增加 Worker 节点线性扩展算力，突破单机瓶颈。
+- MR：通过 Map 和 Reduce 函数，能够表达绝大多数批处理与数据变换场景。
 
 传统分布式架构：
 
-- 缺陷：调度器只看 cpu 是否空闲，导致海量原始数据必须跨网络搬运。而网络带宽比 cpu 更加昂贵。
-- MR：提出数据本地化调度（Data Locality），优先将 Map 任务调度至存有输入数据副本的机器上，大幅削减跨机架网络传输；同时引入 Combiner（合并器），在 Map 端本地执行预聚合后再传输中间结果，进一步节省带宽。
+- 缺陷：调度器只看 cpu 是否空闲，导致海量原始数据必须跨网络搬运。而当时网络带宽比 cpu 更加昂贵。
+- MR：提出数据本地化调度（Data Locality），计算向数据移动，优先将任务调度到持有数据副本的节点。
 
-### 【核心思想与方法论】
+## 架构设计
+
+### 编程模型
+
+Map：由用户编写的函数。处理输入键值对，并生成中间键值对。 （Intermediate Key/Value）。
+
+Reduce：还是由用户编写。会把所有 key 值相同的中间键值对进行合并，生成 0 或 1 个输出值（仍然是 key-value 格式）
+
+### 应用
+
+分布式文本匹配/搜索（distributed grep）：
+
+- map 函数会检查每一行输入，如果这一行与用户所给的条件匹配，则会输出这一行。
+- reduce 函数直接把 map 的中间输出作为最终输出。
+
+url 访问频率统计：
+
+- map 函数处理网页请求日志，并输出 `<URL,1>`（该 url 被访问一次）
+- reduce 合并所有 url 相同的中间键值对，输出 `<URL, total count>`
+
+反向网页链接图（Reverse Web-Link Graph）：即列出链接到 target 网页的所有 source 网页。
+
+- map 函数记录每个链接：`<target, source>` （source → target）
+- reduce 函数合并所有 target 相同的中间键值对，输出 `<target, list(source)>`
+
+每个网站的词向量（Term-Vector per Host）：
+
+- 词向量 `list(<word,frequency>)` ，即一组单词 - 词频键值对。
+- map 函数输出 `<hostname, term vector>`（hostname 相当于某一个网站，是多个网页的聚合。这一步的 term vector 包含网站的全部单词）
+- reduce 函数合并，并丢弃低频的 term，输出 `<hostname, term vector>`
+
+倒排索引（Inverted Index）：快速查找哪些文档包含给定 word
+
+- map 处理每个文档，输出 `<word, document ID>`
+- reduce 合并、排序，输出 `<word, list(document ID)>`
+
+### 流程
+
+
+
+## 关键机制和容错设计
+
+**数据本地化调度 (Data Locality)**
+
+- **策略**：Master 根据 GFS 提供的块位置信息，优先调度 Map 任务至持有该数据副本的物理机上；次优选择在同一机架交换机下的机器；最差情况下才进行跨机架传输。
+- **效果**：几乎消除原始数据的大规模网络开销，将网络瓶颈转移到更紧凑的中间数据混洗上。
+
+**Combiner 本地预聚合**
+
+- **机制**：允许在 Map 节点的本地内存中预先执行一次微型 Reduce（如词频先做本地加和）。
+- **效果**：极大压减 Map 溢写到磁盘以及 Shuffle 网络传输的数据量。
+
+**节点容错 (Fault Tolerance)**
+
+- **Worker 故障**：Master 会定期 ping 每一个 worker（即定期周期性心跳探测），如果联系不上：
+	- 已完成/进行中的的 map 任务会重新执行（因为 map 任务产出的数据存在 worker 的本地）
+	- 进行中的 reduce 任务会重新执行（已完成的 reduce 任务产出的数据存于 global 文件系统，所以无需重新执行）
+- **Master 故障**：通过周期性写入 Checkpoint 恢复。在早期设计中，若 Master 彻底损坏则直接终止任务（依靠极简架构换取低复杂度）。
+- **确定性语义保证 (Atomic Commit)**（在故障发生的情况下，MapReduce 算出的结果仍然正确。）： 依赖 Atomic Commit（**原子提交**）机制：要么完全不生成最终文件，要么生成完整正确的最终文件。
+	- 对于 Map 任务：执行时并不直接生成最终文件，而是生成 R 个以自己 ID 命名的私有临时文件。当 Map 任务彻底处理完所有输入后，Worker 才会发消息（R 个文件名）给 Master。
+	- 对于 reduce 任务：Reduce 任务会把结果写入私有临时文件。当 reduce 任务处理完成后，会调用底层文件系统的原子重命名（Atomic Rename）操作，把这个临时文件改成最终的输出文件名。
+
+**落后者缓解 (Backup Tasks / Speculative Execution)**
+
+- **问题**：集群计算常受限于“短板效应”（Straggler，由于磁盘坏道、CPU 争抢、网卡降速导致个别任务执行极慢）。
+- **解法**：当作业接近尾声时，Master 为剩余未完成的任务并发启动副本实例（Backup Tasks）。任一副本跑完即标记任务完成，并终止其他副本。仅消耗几个百分点的额外资源，大幅缩减整体尾部延迟（Tail Latency）
+
+### 核心思想与方法论
 
 它的工作原理是什么？
 
@@ -85,26 +164,83 @@ HIDDEN_END
 
 ### 【关键权衡与假设 (Trade-offs & Assumptions)】
 
-#### 系统的假设是什么？（系统的前提）
 
-- 硬件环境：廉价且不可靠。机器故障是常态。
-- 数据本地性假设：底层依赖 GFS（Google 文件系统），数据被切分为 64MB 块并在多台机器上复制。
+
+
+#### 系统的假设/前提是什么？
+
+物理与环境假设（来源于现实）：
+- 采用廉价且不可靠的商用集群，硬件故障是常态。
+- 采用廉价IDE硬盘进行存储，底层依赖 GFS（ Google 内部开发的分布式文件系统，该文件系统会把数据放在多个机器上进行备份。），数据以 64MB 块 存储于本地磁盘，每块默认 3副本 冗余。
+- 网络带宽是系统中最稀缺的资源瓶颈
+
+逻辑与数学假设：
 - 工作负载假设：输入数据量大 + 业务逻辑简单且独立。任务主要是扫描全量数据并生成派生数据（如倒排索引、日志统计），不要求毫秒级实时响应，只关注总吞吐量。
-- 用户函数假设：用户提供的 `Map` 和 `Reduce` 函数是确定性的（Deterministic），即相同输入永远产生相同输出。
+- 用户函数假设：用户提供的 `Map` 和 `Reduce` 函数是确定性的，即相同输入永远产生相同输出。
+- 非拜占庭式崩溃停机模型 (Fail-stop / Non-Byzantine Faults)：系统仅处理机器无响应（Heartbeat/Ping 超时）或进程崩溃（Crash），不处理恶意篡改或静默数据损坏等拜占庭故障。
+- 提交原子性依赖：输出正确性硬依赖底层文件系统的原子重命名（atomic rename） 机制。无此特性，则无法保证最终一致性。
+
+#### 系统核心目标与架构取舍
+[[领域/学术/分布式系统领域的架构设计的维度\|分布式系统领域的架构设计的维度]]
+
+核心目标：
+- 极致自动化与高吞吐：目标是将并行化、容错、数据分布和负载均衡的脏活完全封装在库中。让无分布式经验的程序员也能轻松处理海量数据（TB级），追求批处理吞吐量而非延迟。
+
+
+| **设计维度**      | **MapReduce 的主动选择**                                            | **放弃与牺牲的指标**                                 |
+| ------------- | -------------------------------------------------------------- | -------------------------------------------- |
+| **计算拓扑**      | 强制划分为固定的阶段：Map $\rightarrow$ Shuffle/Sort $\rightarrow$ Reduce | 放弃了灵活的通用有向无环图（DAG）流式计算拓扑                     |
+| **中间数据存储**    | Map 的中间键值对写入本地磁盘而非内存常驻，Reduce 写入 GFS                           | 中间结果强制落盘（写入本地磁盘），而非内存缓存。引入了大量本地与网络 I/O 序列化开销 |
+| **Master 架构** | 为了简化设计，Master 为单点且不自动恢复，以换取调度逻辑的极度简化                           | 放弃了 Master 的全自动热备高可用；Master 崩溃直接中止任务交由客户端重试  |
+| **事务一致性**     | 仅依赖文件系统 Atomic Rename，不提供跨多个输出文件的两阶段提交（2PC）                    | 放弃了多输出端跨文件强一致性，将一致性前提推给用户算子的确定性              |
+
+#### 能力边界
+
+- **低延迟交互式分析**：启动开销大（作业初始化、分发二进制程序及与 GFS 交互通常需要约 1 分钟开销），无法满足秒级/毫秒级的交互式查询需求。
+    
+- **多轮迭代算法**：由于模型每次计算结束后才能产出 R 个文件，下一次计算需重读 GFS，无法在内存中复用数据。不适用于多轮机器学习或图遍历（PageRank 等）
+    
+- **流式或增量计算**：输入必须为已静态存储的大文件集合，无法处理持续到达的无边界数据流。
+
+#### 机制局限
+
+- **强制全排序与落盘开销 (Mandatory Sort & Disk Overhead)**：Reduce 端为按 Key 分组必须进行全量排序（若内存不足则使用 External Sort 外部排序），即使某些业务仅需哈希聚合也会产生计算浪费；在 Sort 基准测试中，Map 任务近一半的时间和 I/O 带宽消耗在将中间结果刷入本地磁盘。
+    
+- **掉队者效应 (Stragglers)**：备份任务机制虽缓解长尾，但当其被禁用时，排序任务耗时暴增 44%，说明内部负载不均问题严重，需靠冗余计算兜底。
+    
+- **Master 内存瓶颈**：Master 需在内存中维护 $O(M + R)$ 的调度状态及 $O(M \times R)$ 规模的中间文件位置状态，直接限制了任务切分分片数（$M, R$）的上限。
+
+
+#### 演进
+**推翻前提**
+
+- “网络是稀缺资源”假设：2004 年单机仅 2–4 GB 内存、100 Mbps–1 Gbps 局域网；现代数据中心单机内存普遍跃升至数百 GB 乃至 TB 级，配合 100Gbps+ RDMA 网络，“网络带宽极度紧缺、必须竭力绑定本地磁盘读”的前提被打破，基于全内存跨节点传输成为主流。
+    
+- “内存昂贵且有限”假设：NVMe SSD 替代低速 IDE 机械硬盘，使随机读写延迟与吞吐大幅改善，内存常驻复用相比反复磁盘落盘具备更高的性价比。
+
+**反向取舍**
+
+- **Spark：打破无状态落盘与两阶段模型**：推翻 MapReduce“中间状态落盘至本地文件”的假设，提出 RDD（Resilient Distributed Datasets）与 DAG（有向无环图）执行引擎，通过 Lineage（血缘依赖关系）在内存中实现轻量级重执行容错，攻克了迭代计算必须频繁读写 GFS 的边界。
+    
+- **Flink / Storm：打破批处理切片屏障**：推翻基于静态 Block 切片的批处理模式，采用基于事件驱动（Event-driven）的流式架构，数据逐条在管道中流动传输，突破了高延迟与批处理屏障。
+    
+- **YARN / Mesos：解耦单 Master 调度瓶颈**：针对论文 Section 3.3 中 Master 故障即中止的硬边界，现代资源管理器（YARN/K8s）引入了 主备选举（Active-Standby） 和 Job History Server，牺牲了 Master 的极简实现，换取了生产环境必须的高可用性。
 
 #### 权衡取舍：论文如何进行 trade-offs？获得了什么优势？牺牲了什么？
 
-| 权衡维度        | 牺牲                                                          | 优势                                                |
-| ----------- | ----------------------------------------------------------- | ------------------------------------------------- |
-| 编程模型        | 强制将计算嵌套在极其受限的 Map-Shuffle-Reduce 三步模型中。无法表达复杂的迭代计算或有状态的流式处理 | 系统可以自动并行化、自动分区、自动负载均衡。降低分布式编程门槛。                  |
-| 容错机制（状态恢复）  | 失败任务从头重算，无增量恢复，造成计算资源浪费                                     | 极简的系统设计。Master 无需维护复杂的中间状态日志。“以计算换可靠性”的策略，适合廉价的集群 |
-| 计算调度策略      | 调度灵活性受限。Map 任务必须优先等待存储副本所在的特定机器。                            | 节省了稀缺的网络资源                                        |
-| 抗落后者机制      | 牺牲额外的 CPU 和内存开销。启动“备份任务”意味着在计算末期，同一份工作最多可能被两台机器同时计算         | 用少量冗余资源换取了对抗“木桶效应”（即落后者拖延整体）的能力。                  |
-| Master 的高可用性 | 单点故障。如果 Master 宕机，当前作业直接 Abort（终止）。                          | 设计极度简化。因此放弃复杂的选举机制，换来代码的轻量和维护的便捷。                 |
+| 权衡维度      | 牺牲                                                          | 收益                               |
+| --------- | ----------------------------------------------------------- | -------------------------------- |
+| 编程模型      | 强制将计算嵌套在极其受限的 Map-Shuffle-Reduce 三步模型中。无法表达复杂的迭代计算或有状态的流式处理 | 系统可以自动并行化、自动分区、自动负载均衡。降低分布式编程门槛。 |
+| 容错恢复      | 失败任务从头重算（即粗粒度任务级重算），无增量恢复，造成计算资源浪费                          | 系统无需维护复杂的分布式状态机日志，架构极简稳定。        |
+| 计算调度策略    | 调度灵活性受限。Map 任务必须优先等待存储副本所在的特定机器。                            | 节省了稀缺的网络资源                       |
+| 抗短板机制     | 消耗额外 CPU/内存启动备份任务（冗余计算）。                                    | 有效消减尾部延迟，避免单一慢节点阻塞整个作业。          |
+| Master 架构 | 单点故障。如果 Master 宕机，当前作业直接 Abort（终止）。                         | 避免引入复杂的分布式一致性选举协议，大幅降低系统复杂度      |
 
 > **Master 高可用性（High Availability, HA）** 指的是：当分布式系统中的管理核心（Master 节点）发生宕机、网络中断或硬件损坏等故障时，系统能够自动感知并快速恢复，确保整个集群持续提供服务，避免整个系统瘫痪。
 
-#### 系统的边界是什么？（哪些场景不适用）
+#### 系统的边界是什么？
+
+
 
 基于上述假设和权衡，MapReduce 的**天然边界**非常清晰，这也解释了为什么后来被 Spark 等取代（在特定场景）：
 
@@ -112,23 +248,9 @@ HIDDEN_END
 - **不适合迭代计算**：每个 Job 结束后都要写回 GFS，下一轮重新读入，磁盘 I/O 开销巨大（Spark 通过内存 Resilient Distributed Datasets 解决了这一点）。
 - **不适合非确定性逻辑**：如果 Map/Reduce 函数有随机性或依赖外部时间，故障重算会导致最终数据不一致。
 
-### 【实验与验证 (Evaluation & Results)】
+#### 方案的局限性与短板（或未解决的问题）
 
-#### 作者是如何设计实验验证其方案的？使用了哪些 Benchmark、Baseline 和指标？
-
-- 选取了两个 Benchmark：分布式 Grep 和分布式 Sort。
-- 选取了两个 Baseline：
-	- 针对 Straggler：：将 **Backup Task（备份任务）机制关闭**，观察尾部延迟（Straggler）对总耗时的影响
-	- 针对容错：在作业运行中期**主动杀死 200 个 Worker 进程**（约占总数的 11.4%），观察恢复开销
-- 并未与第三方系统进行横向对比，而是将自身作为实验的对照组。通过开关关键特性和主动注入故障来验证系统的有效性。
-
-> [!NOTE] Benchmark：基准任务
-> Benchmark 是指实验对象；Baseline 是指比较对象。
-> 由于论文篇幅有限，不可能枚举所有场景，所以作者选择了两个极端且对立的任务，证明系统在两个极端的资源瓶颈下都能跑的好：
-> - **Grep（扫描类）**：**I/O 瓶颈**。几乎不占 CPU，不占网络，只测硬盘能读多快。用来证明“数据本地化”起作用了，能把硬盘读满
-> - **Sort（排序类）**：**网络 +CPU 瓶颈**。所有数据都要重新打乱分发（Shuffle）。用来证明“网络调度”和“Combiner”起作用了
-
-### 【局限性与漏洞 (Limitations & Critical Assessment)】
+### 局限性与技术演进
 
 #### 该方案存在哪些明显的短板、边界瓶颈或未解决的问题？
 
@@ -163,114 +285,24 @@ MapReduce 强制要求所有中间结果在进入 Reduce 阶段前进行**全局
 
 > [!NOTE]
 > MapReduce 衍生的技术解决了速度、实时的问题，后来的大数据技术（数据湖、云原生等）已经从“更好的计算”转向“更好地管理、集成、服务于业务”。
+### 【实验与验证 (Evaluation & Results)】
+
+#### 作者是如何设计实验验证其方案的？使用了哪些 Benchmark、Baseline 和指标？
+
+- 选取了两个 Benchmark：分布式 Grep 和分布式 Sort。
+- 选取了两个 Baseline：
+	- 针对 Straggler：：将 **Backup Task（备份任务）机制关闭**，观察尾部延迟（Straggler）对总耗时的影响
+	- 针对容错：在作业运行中期**主动杀死 200 个 Worker 进程**（约占总数的 11.4%），观察恢复开销
+- 并未与第三方系统进行横向对比，而是将自身作为实验的对照组。通过开关关键特性和主动注入故障来验证系统的有效性。
+
+> [!NOTE] Benchmark：基准任务
+> Benchmark 是指实验对象；Baseline 是指比较对象。
+> 由于论文篇幅有限，不可能枚举所有场景，所以作者选择了两个极端且对立的任务，证明系统在两个极端的资源瓶颈下都能跑的好：
+> - **Grep（扫描类）**：**I/O 瓶颈**。几乎不占 CPU，不占网络，只测硬盘能读多快。用来证明“数据本地化”起作用了，能把硬盘读满
+> - **Sort（排序类）**：**网络 +CPU 瓶颈**。所有数据都要重新打乱分发（Shuffle）。用来证明“网络调度”和“Combiner”起作用了
+
+
 
 ---
 
-## 精读
-
-### 英文
-
-名词/术语
-
-- Large Clusters：大规模集群。把很多独立的计算机通过网络连接起来，让它们像一个整体一样协同工作。
-- commodity machines：可批量采购的普通商用计算机。
-- derived data：通过对原始数据进行加工、计算后得到的派生/衍生数据
-- library：在计算机领域中指实现了特定功能的代码集合，即程序库、函数库。
-- primitive：在编程语言的语境下，它通常被翻译为“原语”、“基本操作”或者“底层基础构件”
-- refinements：原意“改良品”，技术文档中常指对原有模型、方案的细节优化调整。
-- invocation：祈祷、召唤、程序调用
-- pseudo-code：伪代码
-- specification：规范、说明书。
-- dual-processor 双处理器
-- semantics：语义。semantics in the presence of failures 指的是当系统遇到故障时，程序最终会呈现出什么样的行为表现和计算结果。
-- locality 局部性
-- replica 复制品。数据的冗余副本
-
-动词
-
-- partition v. 分区、划分。把输入数据划分为多个部分，以便分配到集群的不同机器上并行处理。
-- crawl v. 网络爬虫
-- conspire v. 指多个不利因素共同作用引发后续问题。
-- obscure v. 掩盖
-- reduce v. 减少。在数据处理中，相当于把大量数据缩减的过程，即“归约”、“合并”
-- emits v. 排放。可指程序输出、返回某个数据结果的动作
-- invoke v. 祈求、调用。invoke the function.
-- parse v. 对输入的文本、数据按照特定规则进行拆解、转化、处理。（原意：从语法上描述/分析词句）
-
-> [!NOTE] parallelize the computation, distribute the data
-> - parallelize 并行化。解决“怎么算”的问题。把大任务拆成可以同时进行的小任务。
-> - distribute 分发、分布式处理。解决“数据在哪”的问题。即数据的物理分配。
-
-### Programming Model
-
-Map：由用户编写的函数。处理输入键值对，并生成中间阶段（intermediate）键值对。 
-
-Reduce：还是由用户编写。会把所有 key 值相同的 intermediate 键值对进行合并，生成 0 或 1 个输出值（仍然是 key-value 格式）
-
-其她：
-
-- 分布式文本匹配/搜索（distributed grep）：
-	- map 函数会检查每一行输入，如果这一行与用户所给的条件匹配，则会输出这一行。
-	- reduce 函数直接把 map 的中间输出作为最终输出。
-- url 访问频率统计：
-	- map 函数处理网页请求日志，并输出 `<URL,1>`（该 url 被访问一次）
-	- reduce 合并所有 url 相同的中间键值对，输出 `<URL, total count>`
-- 反向网页链接图（Reverse Web-Link Graph）：即列出链接到 target 网页的所有 source 网页。
-	- map 函数记录每个链接：`<target, source>` （source → target）
-	- reduce 函数合并所有 target 相同的中间键值对，输出 `<target, list(source)>`
-- 每个网站的词向量（Term-Vector per Host）：
-	- 词向量 `list(<word,frequency>)` ，即一组单词 - 词频键值对。
-	- map 函数输出 `<hostname, term vector>`（hostname 相当于某一个网站，是多个网页的聚合。这一步的 term vector 包含网站的全部单词）
-	- reduce 函数合并，并丢弃低频的 term，输出 `<hostname, term vector>`
-- 倒排索引（Inverted Index）：快速查找哪些文档包含给定 word
-	- map 处理每个文档，输出 `<word, document ID>`
-	- reduce 合并、排序，输出 `<word, list(document ID)>`
-- 分布式排序（Distributed Sort）
-	- 需要额外步骤——分区
-
-### Implementation
-
-环境：
-
-- 机器采用双处理器 x86 架构。运行 Linux 系统。每台机器 2-4GB 内存。
-- 采用商用网络硬件。单机网速是 100 Mbps（megabits/second） 或者 1Gbps（1gigabit/second）。不过集群的平均对分带宽要低得多
-
-> [!NOTE] 对分带宽（bisection bandwidth）
-> 假设把整个集群的机器分为左右两半，对分带宽是指：连接左、右两半边的所有网线加在一起的总带宽
-
-- 一个集群有成百上千台机器，且机器故障是普遍的
-- 数据存储：
-	- 用廉价的本地硬盘（IDE disk,但它现在已经被 SATA 和 NVMe 取代）
-	- 用 Google 内部开发的分布式文件系统（GFS），该文件系统会把数据放在多个机器上进行备份。
-- 用户将 job 提交给调度系统。每个 job 由一组 tasks 组成。调度器会把这一组 tasks 分配给一组可用的机器。
-
-![Pasted image 20260801085426.png](/img/user/%E9%99%84%E4%BB%B6/%E5%9B%BE%E7%89%87/Pasted%20image%2020260801085426.png)
-
-1. MapReduce 把 input files 分成 M 小块
-2. 有 M 个 map 任务和 R 个 reduce 任务；一个 Master 节点（进程）和多个 worker 节点。Master 负责把任务分配到空闲的 worker 上。
-3. MapReduce 库的解析器从 input date 中提取出键值对，作为 map 函数的输入。worker 运行 map 函数，获得 intermediate 键值对，并缓存在内存中。
-4. 内存中的 intermediate 键值对会被定期写入 local disk，并被 partitioning function 划分为 R 个区域。这些键值对在本地磁盘上的存储位置会被传回给 master，由 master 节点负责把这些位置信息发给 reduce worker。
-5. reduce work 获得信息后，对 map worker 发起 remote read，读取 local disk 上属于自己分区的那一部分数据。接着对获得的全部 intermediate 键值对进行排序（将相同键的数据放在一块）。
-	- 若中间数据量过大，无法存入内存中，则需要进行外部排序
-6. 进行 reduce 操作。将 key 相同的键值对归为一个集合，对每个集合进行 reduce 操作（具体逻辑用户自定义）。reduce 的输出结果 append（追加写入）进该 reduce 分区对应的输出文件中。每个 reduce 任务独立生成一个输出文件（共 R 个）
-7. 所有任务完成后，master 唤醒用户程序，返回结果。
-
-Master Data Structures：
-
-- master 内部会维护：每个 map task 和 reduce task 的状态（idle、in-progress、completed），以及执行该任务的 worker 标识。
-- master 相当于 map 到 reduce 的中介。对于每个已完成的 map 任务，它会存储该 map 任务所生成的 R 个 intermediate file 所在区域的位置和大小。
-
-Fault Tolerance
-
-- Wroker Failure
-	- Master 会定期 ping 每一个 worker，如果联系不上：
-		- 已完成/进行中的的 map 任务会重新执行（因为 map 任务产出的数据存在 worker 的本地）
-		- 进行中的 reduce 任务会重新执行（已完成的 reduce 任务产出的数据存于 global 文件系统，所以无需重新执行）
-- Master Failure
-	- 通过 checkpoints（检查点）来恢复状态
-- Semantics in the Presence of Failures：在故障发生的情况下，MapReduce 算出的结果仍然正确。
-	- 依赖 Atomic Commit（原子提交）机制：要么完全不生成最终文件，要么生成完整正确的最终文件。
-		- 对于 Map 任务：执行时并不直接生成最终文件，而是生成 R 个以自己 ID 命名的私有临时文件。当 Map 任务彻底处理完所有输入后，Worker 才会发消息（R 个文件名）给 Master。
-		- 对于 reduce 任务：Reduce 任务会把结果写入私有临时文件。当 reduce 任务处理完成后，会调用 atomically rename 操作，把这个临时文件改成最终的输出文件名。
-
-Locality
+ 
