@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-22T17:30:21.291+08:00","dg-note-properties":{}}
+{"dg-publish":true,"dg-path":"Others/ojeawd","dg-permalink":"ojeawd","permalink":"/ojeawd/","created":"2026-08-22T12:49:25.108+08:00","updated":"2026-08-23T09:40:26.413+08:00","dg-note-properties":{}}
 ---
 
 
@@ -9,7 +9,6 @@
 > - [Digital Garden 插件官方文档](https://docs.forestry.md/)
 
 ## 准备
-
 
 1. 准备 GitHub 模版仓库与 Token
 
@@ -69,3 +68,6 @@ tags:
 
 - `dg-pass: "your-password"`：为该单篇笔记设置访问密码。未输入正确密码前，访客无法阅读内容。
 - `dg-pinned: "true"`：在侧边栏导航树中将该笔记置顶显示。
+- `dg-hide: true`：想整篇笔记都不出现在网站的导航、搜索、图谱等任何地方，只可以通过链接访问
+- `dg-hide-in-filetree: true`：只从文件树中隐藏，但在搜索和图谱中依然可见。
+- `dg-hide-in-graph: true`：只从图谱中隐藏。
