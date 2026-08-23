@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["分布式","MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-23T09:41:33.095+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-23 09:34","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["分布式","MapReduce"]}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-23T09:42:01.629+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-23 09:42","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
 ---
 
 
@@ -11,13 +11,6 @@
 
 >[!note]- 摘要
 > MapReduce is a programming model and an associated implementation for processing and generating large datasets that is amenable to a broad variety of real-world tasks. Users specify the computation in terms of a _map_ and a _reduce_ function, and the underlying runtime system automatically parallelizes the computation across large-scale clusters of machines, handles machine failures, and schedules inter-machine communication to make efficient use of the network and disks. Programmers find the system easy to use: more than ten thousand distinct MapReduce programs have been implemented internally at Google over the past four years, and an average of one hundred thousand MapReduce jobs are executed on Google's clusters every day, processing a total of more than twenty petabytes of data per day.
-
-HIDDEN_END
-
-> 相关笔记：
-> - [[领域/学术/如何阅读文献——综述篇\|如何阅读文献——综述篇]]
-> - [[领域/学术/如何阅读文献——期刊篇\|如何阅读文献——期刊篇]]
-> - [[领域/学术/如何阅读文献-里程碑论文\|如何阅读文献-里程碑论文]]
 
 HIDDEN_END
 
