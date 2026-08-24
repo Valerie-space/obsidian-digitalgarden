@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-24T00:21:06.260+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-24 00:21","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-24T15:38:34.688+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-24 00:21","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
 ---
 
 
@@ -181,7 +181,7 @@ url 访问频率统计：
 - 提交原子性依赖：输出正确性硬依赖底层文件系统的原子重命名（atomic rename） 机制。无此特性，则无法保证最终一致性。
 
 #### 系统核心目标与架构取舍
-[[领域/学术/分布式系统领域的架构设计的维度\|分布式系统领域的架构设计的维度]]
+[[领域/学术/分布式系统的设计思维——trade-offs\|分布式系统的设计思维——trade-offs]]
 
 核心目标：
 - 极致自动化与高吞吐：目标是将并行化、容错、数据分布和负载均衡的脏活完全封装在库中。让无分布式经验的程序员也能轻松处理海量数据（TB级），追求批处理吞吐量而非延迟。
