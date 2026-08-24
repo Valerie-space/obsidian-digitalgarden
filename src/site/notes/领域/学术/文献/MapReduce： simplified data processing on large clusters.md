@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-24T15:38:34.688+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-24 00:21","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["#分布式","#MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-08-25T00:17:51.450+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-25 00:17","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["#分布式","#MapReduce"]}}
 ---
 
 
@@ -16,10 +16,8 @@
 > - [[领域/学术/如何阅读文献——综述篇\|如何阅读文献——综述篇]]
 > - [[领域/学术/如何阅读文献——期刊篇\|如何阅读文献——期刊篇]]
 
-> [!NOTE]
+> [!NOTE] 为什么要读里程碑论文？它不会过时吗？
 > 里程碑的定义是：重新定义了问题空间（转移范式）、划定了边界
-> 
-> 为什么要读里程碑论文？它不会过时吗？
 > 
 > - 里程碑论文是技术的主干，后续的创新大多是沿此衍生出的分支或对主干局限性的修正。了解主干能让我们发现技术是如何演进的。
 > - 里程碑论文中提出的概念/解决的痛点/遗留的问题往往是学术界的常识，最新论文默认我们已经掌握了这些基础。
@@ -27,6 +25,7 @@
 > 	- 如何定义问题？
 > 	- 如何约束和权衡？（在给定的边界条件下，做架构上的权衡）
 > 	- 如何设计实验来评估性能、或证明方案的正确性
+> 
 > 不过，硬件假设和工程细节会变化。
 
 ## 总结
