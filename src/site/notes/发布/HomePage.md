@@ -9,6 +9,7 @@
 
 - 2026-08-24  [[领域/学术/数据系统的架构\|数据系统的架构]]
 - 2026-08-22  [[发布/如何将Obsidian文章发布至个人网站？\|如何将Obsidian文章发布至个人网站？]]
+- 2026-08-10  [[领域/计算机/Go语言：从排序功能看接口、反射、闭包、泛型\|Go语言：从排序功能看接口、反射、闭包、泛型]]
 - 2026-08-06  [[技能/Go语言安装-WSL2环境（宝宝巴士版）\|Go语言安装-WSL2环境（宝宝巴士版）]]
 - 2026-08-04  [[领域/计算机/MIT6.5840 Lab 1：MapReduce\|MIT6.5840 Lab 1：MapReduce]]
 - 2026-08-01  [[领域/学术/文献/MapReduce： simplified data processing on large clusters\|MapReduce： simplified data processing on large clusters]]
