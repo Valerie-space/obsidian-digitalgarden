@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-08-22T23:28:52.701+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-08-22 18:05","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-08-25T22:16:34.670+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-08-22 18:05","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 
@@ -23,7 +23,7 @@
 
 ## Go 
 
-- [[技能/Go语言安装-WSL2环境\|Go语言安装-WSL2环境]]
+- [[技能/Go语言安装-WSL2环境（宝宝巴士版）\|Go语言安装-WSL2环境（宝宝巴士版）]]
 - [[领域/计算机/Go语言\|Go语言]]
 
 ## 开始
