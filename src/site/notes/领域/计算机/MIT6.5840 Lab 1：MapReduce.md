@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-09-02T11:05:27.587+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-09-02 11:05","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-09-02T11:12:28.616+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-09-02 11:05","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 
@@ -129,7 +129,7 @@ mapf := xmapf.(func(string, string) []mr.KeyValue)
 > - mapf：它是通过类型断言强转后得到的函数变量，是一个具有特定签名的标准 Go 函数。另外，`map`是 Go 语言的关键字，不能作为变量名；用 `mapf`表示`Map Function`，即可以明确变量是一个函数类型，也可以区分阶段和方法（Map 可以指代“Map 阶段/Map 任务”，而 `mapf` 则特指“用户写的那个负责具体映射计算的函数”。）
 > 	- 也可以用 `mapFunc` 来命名。
 
-> [!NOTE]- 为什么类型断言的目标是 `func(string, string) []mr.KeyValue`，而不是 `Map`？
+> [!NOTE]- 为什么类型断言的目标不能直接用函数名 `Map`？
 > 
 > 类型断言的语法为 `接口变量.(目标类型)`，括号内**必须是一个类型**，而不能是一个具体的函数名。
 > 
