@@ -7,6 +7,7 @@
 
 > 正常情况下，网站会被渲染为白底黑字。但部分手机浏览器为夜间模式时，引用块会渲染失败。可以用其她浏览器试试打开页面。
 
+- 2026-09-02  [[领域/计算机/MapReduce 设计流程\|MapReduce 设计流程]]
 - 2026-09-02  [[领域/计算机/MIT6.5840 Distributed Systems\|MIT6.5840 Distributed Systems]]
 - 2026-09-02  [[领域/计算机/MIT6.5840 Lab 0：Preparation\|MIT6.5840 Lab 0：Preparation]]
 - 2026-08-24  [[领域/学术/数据系统的架构\|数据系统的架构]]
