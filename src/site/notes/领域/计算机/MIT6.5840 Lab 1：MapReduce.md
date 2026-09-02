@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-09-02T11:12:28.616+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-09-02 11:05","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840-lab1","dg-permalink":"mit6.5840-lab1","permalink":"/mit6.5840-lab1/","title":"MIT6.5840 Lab 1：MapReduce","created":"2026-08-04T12:14:28.256+08:00","updated":"2026-09-02T11:12:56.617+08:00","dg-note-properties":{"title":"MIT6.5840 Lab 1：MapReduce","aliases":[null],"created":"2026-08-04","updated":"2026-09-02 11:12","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 

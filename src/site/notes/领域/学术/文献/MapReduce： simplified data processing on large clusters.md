@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["分布式","MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-09-02T10:59:32.422+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-08-25 20:14","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["分布式","MapReduce"]}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/MapReduce论文笔记","dg-permalink":"mapreduce-paper","permalink":"/mapreduce-paper/","title":"MapReduce： simplified data processing on large clusters","tags":["分布式","MapReduce"],"created":"2026-08-01T02:49:30.222+08:00","updated":"2026-09-02T16:37:05.899+08:00","dg-note-properties":{"title":"MapReduce： simplified data processing on large clusters","aliases":null,"author":["Dean Jeffrey","Ghemawat Sanjay"],"published":2008,"source":"Communications of the ACM","url":"https://dl.acm.org/doi/10.1145/1327452.1327492","citation":null,"created":"2026-08-01","updated":"2026-09-02 16:37","finished":null,"type":"literature","subtype":"article","level":null,"description":null,"status":"active","tags":["分布式","MapReduce"]}}
 ---
 
 【草稿】
@@ -30,11 +30,8 @@
 
 ## 阅读
 
-### 方法设计
+详见[[领域/计算机/MapReduce 设计流程\|MapReduce 设计流程]]
 
-### 实验设计
-
-### 实现
 ## 评价
 
 
@@ -111,13 +108,45 @@ Google的核心洞察在于：她们面对的绝大多数大规模任务（网�
 - 在这些问题域里，它分别在哪些维度上做了 trade-off，方向是什么，代价是什么？
 - 论文是否意识到这些代价，并进行了缓解？
 
+核心问题域
+
+[[领域/学术/分布式系统的主题、问题域与设计选项#计算模型\|计算模型]]：编程模型的宽窄。
+- 论文选择了极其受限的编程模型（只允许map+reduce结构），放弃了通用性，换取自动并行、容错以及极低的编程门槛。
+
+- [[领域/学术/分布式系统的主题、问题域与设计选项#容错\|容错]]：
+
+次要问题域
+
+| 主题      | 核心问题                             |
+| ------- | -------------------------------- |
+| 时序      |                                  |
+| 存储模型    |                                  |
+| 网络通信    |                                  |
+| 数据模型    |                                  |
+| 数据布局    | 数据应该以什么方式分布在多个节点上？               |
+| 复制      |                                  |
+| 分区      |                                  |
+| 共识      |                                  |
+| 协调      | 多个节点如何就共享资源的使用权和行为顺序达成协议？        |
+| 消息传递    |                                  |
+| 计算模型    | 分布式计算任务如何被抽象、组织和表达？              |
+| 调度与资源管理 | 计算任务如何被分配到节点，资源如何被隔离和分配？         |
+| 一致性     | 系统对客户端承诺呈现什么样的读写语义？              |
+| 事务      | 多步操作如何保证原子性与隔离性？                 |
+| 接口语义    |                                  |
+| 容错      | 系统如何在局部故障发生时继续正确运行并从故障中恢复？       |
+| 安全性     |                                  |
+| 可观测性    |                                  |
+| 可演化性    |                                  |
+| 信任模型    | 系统对参与节点的行为做出什么假设，以及如何在该假设下保证正确性？ |
+
 ### 三、这篇论文的核心洞察（Key Insight）是什么？
 
 - 论文的核心洞察是什么？能否迁移到其她场景？
 
 ### 四、这篇论文的局限与边界？
 
-- 论文的局限性是什么？（包括作者已承认的显式局限，以及自己从[[领域/学术/分布式系统的问题域与trade-offs\|取舍]]中推导出来的隐式局限）
+- 论文的局限性是什么？（包括作者已承认的显式局限，以及自己从[[领域/学术/分布式系统的主题、问题域与设计选项\|取舍]]中推导出来的隐式局限）
 - 论文的边界（假设失效的场景）是什么？
 
 ### 五、这篇论文和其她工作的关系是什么？
@@ -269,7 +298,7 @@ url 访问频率统计：
 - 提交原子性依赖：输出正确性硬依赖底层文件系统的原子重命名（atomic rename） 机制。无此特性，则无法保证最终一致性。
 
 #### 系统核心目标与架构取舍
-[[领域/学术/分布式系统的问题域与trade-offs\|分布式系统的问题域与trade-offs]]
+[[领域/学术/分布式系统的主题、问题域与设计选项\|分布式系统的主题、问题域与设计选项]]
 
 核心目标：
 - 极致自动化与高吞吐：目标是将并行化、容错、数据分布和负载均衡的脏活完全封装在库中。让无分布式经验的程序员也能轻松处理海量数据（TB级），追求批处理吞吐量而非延迟。
