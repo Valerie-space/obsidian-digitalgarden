@@ -1,11 +1,11 @@
 ---
-{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"FUSE攻击不可行的证明","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T03:01:47.407+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"FUSE攻击不可行的证明","aliases":["FUSE攻击不可行的证明"],"created":"2026-10-15","updated":"2026-10-16 02:42","finished":null,"type":"subproject","description":null,"status":"active"}}
+{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"FUSE攻击不可行的证明","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T03:04:32.769+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"FUSE攻击不可行的证明","aliases":["FUSE攻击不可行的证明"],"created":"2026-10-15","updated":"2026-10-16 03:04","finished":null,"type":"subproject","description":null,"status":"active"}}
 ---
 
 
-# AA机制
+# AA 机制
 
-> 用电脑看更方便看脚注。脚注里会标注原文的位置和内容。
+> 用电脑看更方便看脚注。脚注里会标注原文的内容。
 
 AA 区块和稳定区块的定义：
 
@@ -23,13 +23,15 @@ slot t 的区块 b 的 parent 选择逻辑：[^7]
 1. 如果 $AA_{t-1}$ 存在，则 parent(b)=$AA_{t-1}$
 2. 否则 parent 为 ForkChoice 的输出。
 
-> AA 的实验代码里，在 `proposer.go`（以及一系列调用文件）中，每个新提议的区块所选择的 parent 都是通过 forkchoice 来获取的。跳过了第一步。
+> AA 的实验代码里，在 `proposer.go`（以及一系列调用文件）中，每个新提议的区块所选择的 parent 都是通过 forkchoice 来获取的。跳过了第一步，但结果是一样的。
 
 诚实 attestor 只可能投票给 ForkChoice 的输出 [^4]
 
 ForkChoice 只可能输出**稳定区块**[^6][^8]
 
 ## 原文参考
+
+AA 中所有的，FUSE 所依赖的机制和定义都在这了（除了转发和 u 引用）
 
 由于这篇是二次整理，标章节号什么的有点麻烦，就不标了
 
@@ -75,13 +77,13 @@ ForkChoice 只可能输出**稳定区块**[^6][^8]
 	> Note that there exists a case where a Byzantine validator $v_j$ proposes two conflicting blocks in slot $t$ and both blocks form $AA_{t-1}$. Upon receiving such blocks, $v_i$ still randomly selects one block. The proposer of the two blocks will eventually be slashed.
 
 [^8]: 	> **The longest chain fork choice rule.** Our rule selects the chain with the most number of stable blocks, i.e., the chain **led by block $b_2$** 
-    >
+	>
 	> Note that **unstable blocks are not considered in our new fork choice rule**. 
 	> 不稳定区块不会被 ForkChoice 输出
 	> When the network is synchronous, we can in fact directly ignore unstable blocks. To deal with network asynchrony, we still need to consider unstable blocks. In our protocol, unstable blocks can be included in the blocks if the transactions in unstable blocks do not conflict (i.e., $b_4$ will in the $u$ field of some block in $c_2$ )
 
 	![Pasted image 20261015200056.png](/img/user/%E9%99%84%E4%BB%B6/%E5%9B%BE%E7%89%87/Pasted%20image%2020261015200056.png)
-	
+
 	- root 为最后一个被验证的 checkpoint
 	- 本规则会选择包含稳定块数量最多的链，即 b2 引导的链。
 		- 注意!!!选择的是 b2 而不是 b4！链 c_2 的头部是 b_2 而不是 b4！
