@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840","dg-permalink":"mit6.5840","permalink":"/mit6.5840/","title":"MIT6.5840 Distributed Systems","created":"2026-09-02T10:53:16.159+08:00","updated":"2026-09-02T11:02:14.528+08:00","dg-note-properties":{"title":"MIT6.5840 Distributed Systems","aliases":[null],"created":"2026-09-02","updated":"2026-09-02 11:02","area":"计算机","type":"study","description":null,"status":"active"}}
+{"dg-publish":true,"dg-path":"Lecture/MIT6.5840/mit6.5840","dg-permalink":"mit6.5840","permalink":"/mit6.5840/","title":"MIT6.5840 Distributed Systems","created":"2026-09-02T10:53:16.159+08:00","updated":"2026-09-16T21:05:57.902+08:00","dg-note-properties":{"title":"MIT6.5840 Distributed Systems","aliases":[null],"created":"2026-09-02","updated":"2026-09-16 21:05","area":"计算机","type":"study","description":null,"status":"active"}}
 ---
 
 
@@ -29,4 +29,5 @@ Lab 5: Sharded KV
 ## 课程
 
 LEC 1: [[领域/计算机/MIT6.5840 引言\|MIT6.5840 引言]]
-
+LEC 2: [[领域/计算机/MIT6.5840 Threads and RPC\|MIT6.5840 Threads and RPC]]
+LEC 3：[[领域/计算机/MIT6.5840 GFS\|MIT6.5840 GFS]]
