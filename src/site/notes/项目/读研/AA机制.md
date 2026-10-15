@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"FUSE攻击不可行的证明","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T02:42:15.064+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"FUSE攻击不可行的证明","aliases":["FUSE攻击不可行的证明"],"created":"2026-10-15","updated":"2026-10-16 02:42","finished":null,"type":"subproject","description":null,"status":"active"}}
+{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"FUSE攻击不可行的证明","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T03:01:47.407+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"FUSE攻击不可行的证明","aliases":["FUSE攻击不可行的证明"],"created":"2026-10-15","updated":"2026-10-16 02:42","finished":null,"type":"subproject","description":null,"status":"active"}}
 ---
 
 
@@ -21,7 +21,7 @@ AA 区块和稳定区块的关系：
 slot t 的区块 b 的 parent 选择逻辑：[^7]
 
 1. 如果 $AA_{t-1}$ 存在，则 parent(b)=$AA_{t-1}$
-2. 否则 parent 为 ForkChoice 的输出。因此，parent 一定是
+2. 否则 parent 为 ForkChoice 的输出。
 
 > AA 的实验代码里，在 `proposer.go`（以及一系列调用文件）中，每个新提议的区块所选择的 parent 都是通过 forkchoice 来获取的。跳过了第一步。
 
