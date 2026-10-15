@@ -1,11 +1,11 @@
 ---
-{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"AA机制","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T03:20:47.600+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"AA机制","aliases":["AA机制"],"created":"2026-10-15","updated":"2026-10-16 03:05","finished":null,"type":"subproject","description":null,"status":"active"}}
+{"dg-publish":true,"dg-permalink":"aa","permalink":"/aa/","title":"AA机制","hide":true,"created":"2026-10-15T21:24:48.660+08:00","updated":"2026-10-16T03:21:08.676+08:00","dg-note-properties":{"project":"[[项目/读研/读研]]","title":"AA机制","aliases":["AA机制"],"created":"2026-10-15","updated":"2026-10-16 03:05","finished":null,"type":"subproject","description":null,"status":"active"}}
 ---
 
 
 # AA 机制
 
-> 用电脑看更方便看脚注。脚注里会标注原文的内容。
+> 脚注里会标注原文的内容。
 
 AA 区块和稳定区块的定义：
 
